@@ -1,11 +1,18 @@
-import { Text, View } from "react-native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Stack } from "expo-router";
+import { nowPlayingAction } from "../core/actions/movies/now-playing.action";
 import "../global.css";
 
 const RootLayout = () => {
+  nowPlayingAction();
+
+  // gestor de estados de tareas asíncronas
+  const queryClient = new QueryClient();
+
   return (
-    <View>
-      <Text>RootLayout</Text>
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <Stack screenOptions={{ headerShown: false }} />
+    </QueryClientProvider>
   );
 };
 
