@@ -1,20 +1,7 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "jsx": "react",
-    "target": "esnext",
-    "module": "esnext",
-    "lib": [
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "noEmit": true,
-    "isolatedModules": true,
     "strict": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./*"
@@ -22,12 +9,10 @@
     }
   },
   "include": [
-    "./App.tsx",
-    "./src",
-    "./components",
-    "nativewind-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ],
-  "extends": "expo/tsconfig.base"
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
+  ]
 }
