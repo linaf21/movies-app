@@ -1,4 +1,4 @@
-import Formatter from "@/config/helper/formatter";
+import { Formatter } from "@/config/helper/formatter";
 import { IMovieDetails } from "@/infrastructure/interfaces/movie.interface";
 import React from "react";
 import { Text, View } from "react-native";
