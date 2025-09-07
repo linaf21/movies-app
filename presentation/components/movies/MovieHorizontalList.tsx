@@ -6,11 +6,16 @@ import MoviePoster from "./MoviePoster";
 interface IMovieHorizontalListProps {
   movies: IMovie[];
   title?: string;
+  className?: string;
 }
 
-const MovieHorizontalList = ({ movies, title }: IMovieHorizontalListProps) => {
+const MovieHorizontalList = ({
+  movies,
+  title,
+  className,
+}: IMovieHorizontalListProps) => {
   return (
-    <View>
+    <View className={className}>
       {title && <Text className="text-3xl font-bold px-4 mb-2">{title}</Text>}
 
       <FlatList
