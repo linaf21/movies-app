@@ -1,3 +1,4 @@
+import MovieCast from "@/presentation/components/movie/MovieCast";
 import MovieDescription from "@/presentation/components/movie/MovieDescription";
 import MovieHeader from "@/presentation/components/movie/MovieHeader";
 import useMovie from "@/presentation/hooks/useMovie";
@@ -9,7 +10,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 const MovieScreen = () => {
   const { id } = useLocalSearchParams();
 
-  const { movieQuery } = useMovie(+id);
+  const { movieQuery, castQuery } = useMovie(+id);
   const safeArea = useSafeAreaInsets();
 
   const { data, isLoading } = movieQuery;
@@ -35,6 +36,8 @@ const MovieScreen = () => {
         />
 
         <MovieDescription movie={data} />
+
+        <MovieCast actor={castQuery.data ?? []} />
       </View>
     </ScrollView>
   );

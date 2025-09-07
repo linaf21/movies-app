@@ -1,4 +1,6 @@
+import { Cast } from "../interfaces/cast";
 import { IMovie, IMovieDetails } from "../interfaces/movie.interface";
+import { MovieDBCast } from "../interfaces/moviedb-credits.response";
 import { MovieDBMovieResponse } from "../interfaces/moviedb-movie.response";
 import { Result } from "../interfaces/moviedb-response";
 
@@ -33,6 +35,17 @@ export class MovieMapper {
       productionCompanies: movie.production_companies.map(
         (company) => company.name
       ),
+    };
+  };
+
+  static fromTheMovieDBCastToEntity = (actor: MovieDBCast): Cast => {
+    return {
+      id: actor.id,
+      name: actor.name,
+      character: actor.character ?? "No character",
+      avatar: actor.profile_path
+        ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+        : "https://i.stack.imgur.com/l60Hf.png", 
     };
   };
 }
