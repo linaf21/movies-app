@@ -1,3 +1,5 @@
+import MovieDescription from "@/presentation/components/movie/MovieDescription";
+import MovieHeader from "@/presentation/components/movie/MovieHeader";
 import useMovie from "@/presentation/hooks/useMovie";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
@@ -10,7 +12,9 @@ const MovieScreen = () => {
   const { movieQuery } = useMovie(+id);
   const safeArea = useSafeAreaInsets();
 
-  if (movieQuery.isLoading) {
+  const { data, isLoading } = movieQuery;
+
+  if (isLoading || !data) {
     return (
       <View className="flex flex-1 items-center justify-center">
         <Text className="text-xl font-bold mb-4">
@@ -24,9 +28,13 @@ const MovieScreen = () => {
   return (
     <ScrollView>
       <View style={{ paddingTop: safeArea.top }}>
-        <Text className="text-3xl font-bold">
-          {movieQuery.data?.title ?? "Sin título"}
-        </Text>
+        <MovieHeader
+          originalTitle={data.originalTitle}
+          poster={data.poster}
+          title={data.title}
+        />
+
+        <MovieDescription movie={data} />
       </View>
     </ScrollView>
   );
